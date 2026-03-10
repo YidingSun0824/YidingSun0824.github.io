@@ -11,18 +11,19 @@
 
   <style>
     :root{
-      --peking-red:#8c1d40;
-      --peking-red-dark:#6f1733;
-      --peking-red-soft:#f7eef1;
-      --text:#1a1a1a;
-      --muted:#666;
-      --line:#e6d9df;
-      --white:#ffffff;
-      --bg:#fffdfd;
-      --shadow:0 10px 30px rgba(140,29,64,0.08);
-      --radius:18px;
-      --maxw:1080px;
-    }
+  --peking-red:#8b1e24;
+  --peking-red-dark:#641218;
+  --peking-red-deep:#3f090c;
+  --peking-red-soft:#f7eeee;
+  --text:#1a1a1a;
+  --muted:#666;
+  --line:#e6d6d8;
+  --white:#ffffff;
+  --bg:#fffdfc;
+  --shadow:0 12px 32px rgba(100,18,24,0.14);
+  --radius:18px;
+  --maxw:1080px;
+}
 
     *{ box-sizing:border-box; }
 
@@ -52,16 +53,16 @@
       margin:0 auto;
     }
 
-    /* 顶部导航 */
+    
     .site-header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(255,255,255,0.94);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
-    }
-
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(90deg, var(--peking-red-deep) 0%, var(--peking-red-dark) 45%, var(--peking-red) 100%);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 6px 22px rgba(63,9,12,0.18);
+}
     .nav{
       width:min(var(--maxw), 92vw);
       margin:0 auto;
@@ -73,13 +74,13 @@
     }
 
     .brand{
-      font-family:"Cormorant Garamond", serif;
-      font-size:2rem;
-      font-weight:700;
-      color:var(--peking-red);
-      letter-spacing:0.02em;
-      white-space:nowrap;
-    }
+  font-family:"STKaiti","KaiTi","Kaiti SC","Songti SC","Noto Serif TC","PMingLiU","DFKai-SB",serif;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--white);
+  letter-spacing:0.08em;
+  white-space:nowrap;
+}
 
     .nav-links{
       display:flex;
@@ -88,27 +89,25 @@
       align-items:center;
     }
 
-    .nav-links a{
-      color:var(--text);
-      font-weight:500;
-      padding:8px 0;
-      border-bottom:2px solid transparent;
-      transition:all .2s ease;
-    }
+   .nav-links a{
+  color:rgba(255,255,255,0.92);
+  font-weight:500;
+  padding:8px 0;
+  border-bottom:2px solid transparent;
+  transition:all .2s ease;
+}
 
-    .nav-links a:hover{
-      color:var(--peking-red);
-      border-bottom-color:var(--peking-red);
-      text-decoration:none;
-    }
-
-    /* 首屏 */
+.nav-links a:hover{
+  color:var(--white);
+  border-bottom-color:rgba(255,255,255,0.95);
+  text-decoration:none;
+}
+    
     .hero-wrap{
-      background:
-        linear-gradient(135deg, rgba(140,29,64,0.95), rgba(255,255,255,0.88)),
-        linear-gradient(120deg, #ffffff 0%, #f9f3f5 50%, #f4e7ec 100%);
-      border-bottom:1px solid var(--line);
-    }
+  background:
+    linear-gradient(135deg, rgba(63,9,12,0.96) 0%, rgba(100,18,24,0.93) 42%, rgba(139,30,36,0.88) 100%);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
     .hero{
       width:min(var(--maxw), 92vw);
@@ -131,12 +130,12 @@
     }
 
     .hero-card{
-      background:rgba(255,255,255,0.78);
-      border:1px solid rgba(255,255,255,0.85);
-      border-radius:24px;
-      padding:30px 32px;
-      box-shadow:var(--shadow);
-    }
+  background:rgba(255,255,255,0.90);
+  border:1px solid rgba(255,255,255,0.72);
+  border-radius:24px;
+  padding:30px 32px;
+  box-shadow:0 14px 38px rgba(63,9,12,0.22);
+}
 
     .hero-name{
       font-family:"Cormorant Garamond", serif;
@@ -307,7 +306,7 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <div class="brand">Yiding Sun</div>
+      <div class="brand">孫一丁</div>
       <div class="nav-links">
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
