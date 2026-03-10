@@ -4,186 +4,390 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yiding Sun</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --text:#111;
-      --muted:#555;
-      --line:#d8d8d8;
-      --link:#1a4fff;
-      --bg:#fff;
+      --peking-red:#8c1d40;
+      --peking-red-dark:#6f1733;
+      --peking-red-soft:#f7eef1;
+      --text:#1a1a1a;
+      --muted:#666;
+      --line:#e6d9df;
+      --white:#ffffff;
+      --bg:#fffdfd;
+      --shadow:0 10px 30px rgba(140,29,64,0.08);
+      --radius:18px;
+      --maxw:1080px;
     }
+
+    *{ box-sizing:border-box; }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       background:var(--bg);
       color:var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height:1.6;
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.7;
     }
-    .container{
-      width:min(980px, 92vw);
-      margin:40px auto 60px;
-    }
-    .hero-name{
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(3.2rem, 8vw, 5.4rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: 0.04em;
-  margin: 0 0 16px 0;
-}
 
-.hero-name span{
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeInLetter 0.5s ease forwards;
-}
-
-.hero-name span:nth-child(1){animation-delay:0.00s;}
-.hero-name span:nth-child(2){animation-delay:0.08s;}
-.hero-name span:nth-child(3){animation-delay:0.16s;}
-.hero-name span:nth-child(4){animation-delay:0.24s;}
-.hero-name span:nth-child(5){animation-delay:0.32s;}
-.hero-name span:nth-child(6){animation-delay:0.40s;}
-.hero-name span:nth-child(7){animation-delay:0.48s;}
-.hero-name span:nth-child(8){animation-delay:0.56s;}
-.hero-name span:nth-child(9){animation-delay:0.64s;}
-.hero-name span:nth-child(10){animation-delay:0.72s;}
-
-.hero-name .space{
-  width: 0.32em;
-}
-
-@keyframes fadeInLetter{
-  to{
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-    .top{
-      display:flex;
-      gap:26px;
-      align-items:flex-start;
-    }
-    .avatar{
-      width:170px;
-      height:170px;
-      border-radius:14px;      /* 圆角像学术主页 */
-      object-fit:cover;
-      border:1px solid var(--line);
-      box-shadow: 0 10px 30px rgba(0,0,0,.10);
-      background:#f3f3f3;
-      flex:0 0 auto;
-    }
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      letter-spacing:.2px;
-      line-height:1.15;
-    }
-    .subtitle{
-      margin:0 0 10px;
-      color:var(--muted);
-      font-size:16px;
-    }
-    .links{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:15px;
-    }
-    .links a{
-      color:var(--link);
+    a{
+      color:var(--peking-red);
       text-decoration:none;
     }
-    .links a:hover{ text-decoration:underline; }
-    hr{
-      border:none;
-      border-top:1px solid var(--line);
-      margin:22px 0 26px;
-    }
-    h2{
-      font-size:24px;
-      margin:24px 0 10px;
-    }
-    ul{ margin:8px 0 0 18px; }
-    .section{
-      margin-top:18px;
+
+    a:hover{
+      text-decoration:underline;
     }
 
-    /* 手机端适配 */
-    @media (max-width: 720px){
-      .top{ flex-direction:column; }
-      .avatar{ width:140px; height:140px; }
-      h1{ font-size:36px; }
+    .container{
+      width:min(var(--maxw), 92vw);
+      margin:0 auto;
+    }
+
+    /* 顶部导航 */
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,0.94);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      width:min(var(--maxw), 92vw);
+      margin:0 auto;
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:"Cormorant Garamond", serif;
+      font-size:2rem;
+      font-weight:700;
+      color:var(--peking-red);
+      letter-spacing:0.02em;
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color:var(--text);
+      font-weight:500;
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+      transition:all .2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--peking-red);
+      border-bottom-color:var(--peking-red);
+      text-decoration:none;
+    }
+
+    /* 首屏 */
+    .hero-wrap{
+      background:
+        linear-gradient(135deg, rgba(140,29,64,0.95), rgba(255,255,255,0.88)),
+        linear-gradient(120deg, #ffffff 0%, #f9f3f5 50%, #f4e7ec 100%);
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero{
+      width:min(var(--maxw), 92vw);
+      margin:0 auto;
+      padding:72px 0 64px;
+      display:grid;
+      grid-template-columns:190px 1fr;
+      gap:32px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:190px;
+      height:190px;
+      border-radius:20px;
+      object-fit:cover;
+      border:2px solid rgba(255,255,255,0.85);
+      box-shadow:var(--shadow);
+      background:#f3f3f3;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,0.78);
+      border:1px solid rgba(255,255,255,0.85);
+      border-radius:24px;
+      padding:30px 32px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-name{
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(3.3rem, 8vw, 5.8rem);
+      font-weight:700;
+      line-height:1.02;
+      letter-spacing:0.04em;
+      margin:0 0 12px 0;
+      white-space:nowrap;
+      color:var(--peking-red);
+    }
+
+    .hero-name span{
+      display:inline-block;
+      opacity:0;
+      transform:translateY(12px);
+      animation:fadeInLetter .5s ease forwards;
+    }
+
+    .hero-name span:nth-child(1){animation-delay:0.00s;}
+    .hero-name span:nth-child(2){animation-delay:0.08s;}
+    .hero-name span:nth-child(3){animation-delay:0.16s;}
+    .hero-name span:nth-child(4){animation-delay:0.24s;}
+    .hero-name span:nth-child(5){animation-delay:0.32s;}
+    .hero-name span:nth-child(6){animation-delay:0.40s;}
+    .hero-name span:nth-child(7){animation-delay:0.48s;}
+    .hero-name span:nth-child(8){animation-delay:0.56s;}
+    .hero-name span:nth-child(9){animation-delay:0.64s;}
+    .hero-name span:nth-child(10){animation-delay:0.72s;}
+
+    .hero-name .space{
+      width:0.32em;
+    }
+
+    @keyframes fadeInLetter{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .subtitle{
+      margin:0 0 12px 0;
+      font-size:1.1rem;
+      color:#3a3a3a;
+      font-weight:600;
+    }
+
+    .hero-links{
+      margin:10px 0 16px 0;
+      color:var(--muted);
+      font-size:0.98rem;
+    }
+
+    .hero-links a{
+      margin-right:14px;
+      font-weight:600;
+    }
+
+    .intro{
+      margin:0;
+      color:#333;
+      max-width:760px;
+    }
+
+    /* 正文区域 */
+    main{
+      padding:42px 0 64px;
+    }
+
+    .section{
+      scroll-margin-top:95px;
+      margin-bottom:26px;
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px 30px;
+      box-shadow:0 6px 22px rgba(140,29,64,0.04);
+    }
+
+    h2{
+      margin:0 0 16px 0;
+      font-size:1.7rem;
+      color:var(--peking-red);
+      font-family:"Cormorant Garamond", serif;
+      letter-spacing:0.02em;
+    }
+
+    p{
+      margin:10px 0;
+    }
+
+    ul{
+      margin:10px 0 0 20px;
+      padding:0;
+    }
+
+    li{
+      margin:10px 0;
+    }
+
+    .note-list li{
+      margin:12px 0;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.95rem;
+      padding:8px 0 30px;
+    }
+
+    @media (max-width: 900px){
+      .hero{
+        grid-template-columns:1fr;
+        padding:56px 0 52px;
+      }
+
+      .avatar{
+        width:160px;
+        height:160px;
+      }
+
+      .hero-card{
+        padding:24px 22px;
+      }
+
+      .hero-name{
+        font-size:3.2rem;
+        white-space:normal;
+      }
+
+      .nav{
+        align-items:flex-start;
+        flex-direction:column;
+        padding:12px 0;
+      }
+
+      .nav-links{
+        gap:14px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero-name{
+        font-size:2.6rem;
+      }
+
+      .section{
+        padding:22px 18px;
+      }
+
+      .brand{
+        font-size:1.7rem;
+      }
+
+      .nav-links{
+        font-size:0.95rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
-    <section class="top">
-      <img class="avatar" src="avatar.jpg" alt="Portrait"
-           onerror="this.style.display='none'">
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">Yiding Sun</div>
+      <div class="nav-links">
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#notes">Independent Study Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-      <div>
+  <section class="hero-wrap">
+    <div class="hero">
+      <img class="avatar" src="avatar.jpg" alt="Portrait" onerror="this.style.display='none'">
+
+      <div class="hero-card">
         <h1 class="hero-name">
-  <span>Y</span><span>i</span><span>d</span><span>i</span><span>n</span><span>g</span><span class="space">&nbsp;</span><span>S</span><span>u</span><span>n</span>
-</h1>
+          <span>Y</span><span>i</span><span>d</span><span>i</span><span>n</span><span>g</span><span class="space">&nbsp;</span><span>S</span><span>u</span><span>n</span>
+        </h1>
+
         <p class="subtitle">Stony Brook University · Mathematics &amp; Computer Science</p>
 
-        <p class="links">
+        <p class="hero-links">
           <a href="mailto:yiding.sun@stonybrook.edu">Email</a>
-          &nbsp;·&nbsp;
           <a href="https://github.com/YidingSun0824" target="_blank" rel="noreferrer">GitHub</a>
-          &nbsp;·&nbsp;
-          <a href="https://www.linkedin.com/in/tom-sun-932758386/">Linkedin</a>
-          &nbsp;
- 
-        <p class="section">
-          I am Yiding Sun, a freshman at Stony Brook University majoring in Mathematics and Computer Science. I graduated from Peking University Affiliated High School. My academic interests currently span Artificial Intelligence, Machine Learning, Mathematics, and Quantum Information and Quantum Computing. As an early-stage undergraduate, I am intentionally exploring these areas through research experiences in order to develop a more focused long-term direction. I believe hands-on research is essential for transforming broad curiosity into disciplined expertise.
+          <a href="https://www.linkedin.com/in/tom-sun-932758386/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+
+        <p class="intro">
+          I am Yiding Sun, a freshman at Stony Brook University majoring in Mathematics and Computer Science. I graduated from Peking University Affiliated High School. My academic interests currently span Artificial Intelligence, Machine Learning, Mathematics, and Quantum Information and Quantum Computing. As an early-stage undergraduate, I am intentionally exploring these areas through research experiences in order to develop a more focused long-term direction.
         </p>
       </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <p><strong>Stony Brook University</strong>, B.S. in Mathematics and Computer Science</p>
+      <p>GPA: 4.0/4.0 (Fall 2025)</p>
+      <p><strong>Completed Coursework:</strong> Single-Variable Calculus II (MAT132), Linear Algebra (MAT211), Foundations of Computer Science (CSE113), Introduction to Artificial Intelligence (CIS102).</p>
+      <p><strong>Current Coursework (Spring 2026):</strong> Multivariable Calculus (MAT203), Differential Equations (MAT303), Logic and Proof (MAT250), Probability and Statistics (AMS310).</p>
     </section>
 
-    <hr>
-
-    <h2>Education</h2>
-<p><strong>Stony Brook University</strong>, B.S. in Mathematics and Computer Science</p>
-<p>GPA: 4.0/4.0 (Fall 2025)</p>
-
-<p><strong>Completed Coursework:</strong> Single-Variable Calculus2(MAT132), Linear Algebra (MAT211), 
-Foundations of Computer Science (CSE113), Introduction to Artificial Intelligence (CIS102).</p>
-
-<p><strong>Current Coursework (Spring 2026):</strong> Multivariable Calculus (MAT203), 
-Differential Equations (MAT303), Logic and Proof (MAT250), Probability and Statistics (AMS310).</p>
-
-<p><strong>Individual Study:</strong> Real Analysis (Bartle & Sherbert), Complex Analysis (Fisher), 
-Linear Algebra Done Right (Axler), Introduction to Algorithms (CLRS).</p>
-
-    <section>
+    <section id="experience" class="section">
       <h2>Experience</h2>
       <ul>
-        <li><strong>Math Club</strong> — Have frequent exchanges with senior undergraduate students and PHD students majoring in Applied Mathematics.</li>
-        <li><strong>Resident Community Tutor</strong> — Help other students to study pre-calculus, calculus1, Classical Physics2(PHY132).</li>
-        <li><strong>Research Assistant (MIT, Prof.Mark Vogelsberger)</strong> — Contributing to a research project in large-scale data analysis and artificial intelligence.</li>
-        <li><strong>To be continued...
+        <li><strong>Math Club</strong> — Frequent academic exchanges with senior undergraduate students and PhD students majoring in Applied Mathematics.</li>
+        <li><strong>Resident Community Tutor</strong> — Help other students study Precalculus, Calculus I, and PHY131/132-level physics.</li>
+        <li><strong>Research Assistant (MIT, Prof. Mark Vogelsberger)</strong> — Contributing to a research project in large-scale data analysis and artificial intelligence.</li>
+        <li><strong>More updates coming soon.</strong></li>
       </ul>
     </section>
 
-    <section>
+    <section id="skills" class="section">
       <h2>Skills</h2>
-      <p>Python, R, Java(still working for it)</p>
+      <p><strong>Programming:</strong> Python, R, Java (currently improving)</p>
+      <p><strong>Academic Interests:</strong> Artificial Intelligence, Machine Learning, Applied Mathematics, Quantum Information, Quantum Computing</p>
     </section>
 
-    <section>
+    <section id="notes" class="section">
+      <h2>Independent Study Notes</h2>
+      <ul class="material-list">
+        <li><strong>Real Analysis</strong> — Bartle &amp; Sherbert, <span class="muted">Introduction to Real Analysis</span></li>
+        <li><strong>Complex Analysis</strong> — Fisher, <span class="muted">Complex Variables</span></li>
+        <li><strong>Linear Algebra</strong> — Axler, <span class="muted">Linear Algebra Done Right</span></li>
+        <li><strong>Algorithms</strong> — CLRS, <span class="muted">Introduction to Algorithms</span></li>
+      </ul>
+      <p class="muted">  link  </p>
+    </section>
+
+    <section id="contact" class="section">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:yiding.sun@stonybrook.edu">yiding.sun@stonybrook.edu</a></p>
+      <p><strong>Email:</strong> <a href="mailto:yiding.sun@stonybrook.edu">yiding.sun@stonybrook.edu</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/YidingSun0824" target="_blank" rel="noreferrer">github.com/YidingSun0824</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tom-sun-932758386/" target="_blank" rel="noreferrer">View Profile</a></p>
     </section>
   </main>
+
+  <div class="footer">
+    © 2026 Yiding Sun
+  </div>
 </body>
 </html>
