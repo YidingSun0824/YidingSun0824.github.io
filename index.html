@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yiding Sun</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --peking-red:#8b1e24;
+      --peking-red-dark:#641218;
+      --peking-red-deep:#3f090c;
+
+      --text:#1a1a1a;
+      --muted:#666666;
+      --line:#e6e6e6;
+      --white:#ffffff;
+      --bg:#f7f7f5;
+      --link:#0b63c7;
+
+      --shadow:0 10px 28px rgba(0,0,0,0.08);
+      --radius:18px;
+      --maxw:1080px;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.7;
+    }
+
+    a{
+      color:var(--link);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    .container{
+      width:min(var(--maxw), 92vw);
+      margin:0 auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:linear-gradient(90deg, var(--peking-red-deep) 0%, var(--peking-red-dark) 45%, var(--peking-red) 100%);
+      border-bottom:1px solid rgba(255,255,255,0.12);
+      box-shadow:0 6px 22px rgba(0,0,0,0.16);
+    }
+
+    .nav{
+      width:min(var(--maxw), 92vw);
+      margin:0 auto;
+      min-height:74px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      font-family:"STKaiti","KaiTi","Kaiti SC","Songti SC","Noto Serif TC","PMingLiU","DFKai-SB",serif;
+      font-size:2rem;
+      font-weight:700;
+      color:var(--white);
+      letter-spacing:0.08em;
+      white-space:nowrap;
+    }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      align-items:center;
+    }
+
+    .nav-links a{
+      color:rgba(255,255,255,0.92);
+      font-weight:500;
+      padding:8px 0;
+      border-bottom:2px solid transparent;
+      transition:all .2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--white);
+      border-bottom-color:rgba(255,255,255,0.95);
+      text-decoration:none;
+    }
+
+    .hero-wrap{
+      background:#f7f7f5;
+      border-bottom:1px solid #e8e8e8;
+    }
+
+    .hero{
+      width:min(var(--maxw), 92vw);
+      margin:0 auto;
+      padding:64px 0 56px;
+      display:grid;
+      grid-template-columns:210px 1fr;
+      gap:36px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:210px;
+      height:210px;
+      border-radius:22px;
+      object-fit:cover;
+      border:1px solid #e5e5e5;
+      box-shadow:0 8px 24px rgba(0,0,0,0.08);
+      background:#f3f3f3;
+    }
+
+    .hero-card{
+      background:#ffffff;
+      border:1px solid #e6e6e6;
+      border-radius:24px;
+      padding:32px 36px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .hero-name{
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(3.3rem, 8vw, 5.8rem);
+      font-weight:700;
+      line-height:1.02;
+      letter-spacing:0.04em;
+      margin:0 0 12px 0;
+      white-space:nowrap;
+      color:#1a1a1a;
+    }
+
+    .hero-name span{
+      display:inline-block;
+      opacity:0;
+      transform:translateY(12px);
+      animation:fadeInLetter .5s ease forwards;
+    }
+
+    .hero-name span:nth-child(1){animation-delay:0.00s;}
+    .hero-name span:nth-child(2){animation-delay:0.08s;}
+    .hero-name span:nth-child(3){animation-delay:0.16s;}
+    .hero-name span:nth-child(4){animation-delay:0.24s;}
+    .hero-name span:nth-child(5){animation-delay:0.32s;}
+    .hero-name span:nth-child(6){animation-delay:0.40s;}
+    .hero-name span:nth-child(7){animation-delay:0.48s;}
+    .hero-name span:nth-child(8){animation-delay:0.56s;}
+    .hero-name span:nth-child(9){animation-delay:0.64s;}
+    .hero-name span:nth-child(10){animation-delay:0.72s;}
+
+    .hero-name .space{
+      width:0.32em;
+    }
+
+    @keyframes fadeInLetter{
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .subtitle{
+      margin:0 0 12px 0;
+      font-size:1.1rem;
+      color:#333333;
+      font-weight:600;
+    }
+
+    .hero-links{
+      margin:10px 0 16px 0;
+      color:var(--muted);
+      font-size:0.98rem;
+    }
+
+    .hero-links a{
+      margin-right:14px;
+      font-weight:600;
+    }
+
+    .intro{
+      margin:0;
+      color:#333333;
+      max-width:760px;
+    }
+
+    main{
+      padding:42px 0 64px;
+    }
+
+    .section{
+      scroll-margin-top:95px;
+      margin-bottom:26px;
+      background:#ffffff;
+      border:1px solid #e6e6e6;
+      border-radius:var(--radius);
+      padding:28px 30px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.035);
+    }
+
+    h2{
+      margin:0 0 16px 0;
+      font-size:1.7rem;
+      color:#1f1f1f;
+      font-family:"Cormorant Garamond", serif;
+      letter-spacing:0.02em;
+      border-bottom:1px solid #eeeeee;
+      padding-bottom:8px;
+    }
+
+    p{
+      margin:10px 0;
+    }
+
+    ul{
+      margin:10px 0 0 20px;
+      padding:0;
+    }
+
+    li{
+      margin:10px 0;
+    }
+
+    .note-list li,
+    .material-list li{
+      margin:12px 0;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:0.95rem;
+      padding:8px 0 30px;
+    }
+
+    @media (max-width: 900px){
+      .hero{
+        grid-template-columns:1fr;
+        padding:52px 0 48px;
+      }
+
+      .avatar{
+        width:170px;
+        height:170px;
+      }
+
+      .hero-card{
+        padding:24px 22px;
+      }
+
+      .hero-name{
+        font-size:3.2rem;
+        white-space:normal;
+      }
+
+      .nav{
+        align-items:flex-start;
+        flex-direction:column;
+        padding:12px 0;
+      }
+
+      .nav-links{
+        gap:14px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .hero-name{
+        font-size:2.6rem;
+      }
+
+      .section{
+        padding:22px 18px;
+      }
+
+      .brand{
+        font-size:1.7rem;
+      }
+
+      .nav-links{
+        font-size:0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">孫一丁</div>
+      <div class="nav-links">
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#skills">Skills</a>
+        <a href="#notes">Independent Study Notes</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-wrap">
+    <div class="hero">
+      <img class="avatar" src="avatar2.jpg" alt="Portrait" onerror="this.style.display='none'">
+
+      <div class="hero-card">
+        <h1 class="hero-name">
+          <span>Y</span><span>i</span><span>d</span><span>i</span><span>n</span><span>g</span><span class="space">&nbsp;</span><span>S</span><span>u</span><span>n</span>
+        </h1>
+
+        <p class="subtitle">Stony Brook University · Mathematics &amp; Computer Science</p>
+
+        <p class="hero-links">
+          <a href="mailto:yiding.sun@stonybrook.edu">Email</a>
+          <a href="https://github.com/YidingSun0824" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/tom-sun-932758386/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+
+        <p class="intro">
+          I am a new sophomore student at
+          <a href="https://www.stonybrook.edu/" target="_blank" rel="noreferrer">Stony Brook University</a>
+          majoring in Mathematics. I am also working for
+          <a href="https://www.stonybrook.edu/physics-new/nngroup/" target="_blank" rel="noreferrer">NN Group</a>,
+          building reproducible GUNDAM tutorials and data-analysis workflows for neutrino-oscillation studies.
+          Before that, I graduated from
+          <a href="https://www.pkuschool.edu.cn/" target="_blank" rel="noreferrer">Peking University Affiliated High School</a>.
+          My academic interests currently span Machine Learning, AI4Science, Computational Mathematics, and QIQC.
+          As an early-stage undergraduate, I am intentionally exploring these areas through research experiences in order to develop a more focused long-term direction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <p><strong>Stony Brook University</strong>, B.S. in Mathematics</p>
+      <p>GPA: 4.0/4.0 (Fall 2025), 4.0/4.0 (Spring 2026)</p>
+      <p>
+        <strong>Completed Core Coursework:</strong>
+        Single-Variable Calculus II (MAT132), Linear Algebra (MAT211), Foundations of Computer Science (CSE113),
+        Introduction to Artificial Intelligence (CIS102), Multivariable Calculus (MAT203), Ordinary Differential Equations (MAT303),
+        Logic and Proof (MAT250), Probability and Statistics (AMS310), Finite Mathematical Structure (AMS301),
+        Introduction of Research (PHY287).
+      </p>
+      <p>
+        <strong>Current Coursework (Fall 2026):</strong>
+        Advanced Linear Algebra (MAT310), History of Mathematics (MAT336), Applied Real Analysis and PDE (MAT341).
+      </p>
+    </section>
+
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <ul>
+        <li>
+          <strong>Research Assistant, Stony Brook Neutrino Group — GUNDAM Tutorial Development</strong> —
+          Developed an end-to-end tutorial for GUNDAM, a neutrino-oscillation fitting and analysis framework,
+          using mock datasets to demonstrate the full workflow from input configuration to fitting execution,
+          ROOT output generation, and plot interpretation. Built reproducible documentation and tested command-line
+          pipelines with Unix shell, Git/GitHub, ROOT, and Python/C++-based scientific computing tools.
+        </li>
+
+        <li>
+          <strong>AMS 310 Teaching Assistant / Grader — Probability and Statistics</strong> —
+          Served as a Teaching Assistant and Grader for AMS 310 Probability and Statistics. Graded assignments,
+          evaluated students’ mathematical reasoning, and provided feedback on topics including probability distributions,
+          expectation, variance, sampling distributions, confidence intervals, hypothesis testing, and two-sample inference.
+        </li>
+
+        <li>
+          <strong>Math Club</strong> —
+          Frequent academic exchanges with senior undergraduate students and PhD students majoring in Applied Mathematics.
+        </li>
+      </ul>
+    </section>
+
+    <section id="teaching" class="section">
+      <h2>Teaching Resources</h2>
+      <ul class="material-list">
+        <li>
+          <strong>AMS 310: Probability and Statistics</strong> —
+          <a href="teaching/ams310.html">Lecture notes, practice problems, and selected solutions</a>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <p><strong>Programming:</strong> Python, R, Java (currently improving)</p>
+    </section>
+
+    <section id="notes" class="section">
+      <h2>Independent Study Notes</h2>
+      <ul class="material-list">
+        <li><strong>Real Analysis</strong> — Bartle &amp; Sherbert, <span class="muted">Introduction to Real Analysis</span></li>
+        <li><strong>Complex Analysis</strong> — Fisher, <span class="muted">Complex Variables</span></li>
+        <li><strong>Linear Algebra</strong> — Axler, <span class="muted">Linear Algebra Done Right</span></li>
+        <li><strong>Algorithms</strong> — CLRS, <span class="muted">Introduction to Algorithms</span></li>
+      </ul>
+      <p class="muted">Coming soon...</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p><strong>Email:</strong> <a href="mailto:yiding.sun@stonybrook.edu">yiding.sun@stonybrook.edu</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/YidingSun0824" target="_blank" rel="noreferrer">github.com/YidingSun0824</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tom-sun-932758386/" target="_blank" rel="noreferrer">View Profile</a></p>
+      <p><strong>Office Location:</strong> Physics Building D-124</p>
+    </section>
+  </main>
+
+  <div class="footer">
+    © 2026 Yiding Sun
+  </div>
+</body>
+</html>
