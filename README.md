@@ -1,2 +1,2 @@
-I am Fucking the special one!
+I am the special one!
 Stop coping my work, loser!
