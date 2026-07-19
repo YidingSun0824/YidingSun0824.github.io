@@ -88,7 +88,7 @@
     .nav-links{
       display:flex;
       flex-wrap:wrap;
-      gap:18px;
+      gap:16px;
       align-items:center;
     }
 
@@ -179,6 +179,17 @@
       }
     }
 
+    @media (prefers-reduced-motion: reduce){
+      .hero-name span{
+        opacity:1;
+        transform:none;
+        animation:none;
+      }
+      html{
+        scroll-behavior:auto;
+      }
+    }
+
     .subtitle{
       margin:0 0 12px 0;
       font-size:1.1rem;
@@ -227,6 +238,19 @@
       padding-bottom:8px;
     }
 
+    h3{
+      margin:22px 0 6px 0;
+      font-size:1.05rem;
+      color:#1f1f1f;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    h3:first-of-type{
+      margin-top:6px;
+    }
+
     p{
       margin:10px 0;
     }
@@ -247,6 +271,112 @@
 
     .muted{
       color:var(--muted);
+    }
+
+    /* ---------- Project / publication-style cards ---------- */
+
+    .pub-item{
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+      padding:20px 0;
+      border-bottom:1px solid #efefef;
+    }
+
+    .pub-item:last-of-type{
+      border-bottom:none;
+      padding-bottom:6px;
+    }
+
+    .pub-thumb{
+      flex:0 0 235px;
+      width:235px;
+      border-radius:12px;
+      border:1px solid #e6e6e6;
+      background:#fafafa;
+      overflow:hidden;
+    }
+
+    .pub-thumb img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .pub-body{
+      flex:1;
+      min-width:0;
+    }
+
+    .pub-title{
+      font-weight:700;
+      font-size:1.06rem;
+      color:#1a1a1a;
+      margin:0 0 4px 0;
+    }
+
+    .pub-venue{
+      color:var(--muted);
+      font-size:0.94rem;
+      margin:0 0 8px 0;
+    }
+
+    .pub-desc{
+      margin:0 0 10px 0;
+      color:#333333;
+      font-size:0.97rem;
+    }
+
+    .pub-links{
+      font-size:0.95rem;
+    }
+
+    .pub-links a{
+      font-weight:600;
+      margin-right:12px;
+      white-space:nowrap;
+    }
+
+    .tag{
+      display:inline-block;
+      vertical-align:2px;
+      margin-left:8px;
+      padding:1px 9px;
+      border:1px solid var(--peking-red);
+      border-radius:999px;
+      color:var(--peking-red);
+      font-size:0.72rem;
+      font-weight:700;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+    }
+
+    /* Reading-note entries: same anatomy, no thumbnail */
+
+    .note-item{
+      padding:16px 0;
+      border-bottom:1px solid #efefef;
+    }
+
+    .note-item:last-of-type{
+      border-bottom:none;
+      padding-bottom:6px;
+    }
+
+    /* Service items */
+
+    .service-photo{
+      flex:0 0 235px;
+      width:235px;
+      border-radius:12px;
+      border:1px solid #e6e6e6;
+      overflow:hidden;
+    }
+
+    .service-photo img{
+      display:block;
+      width:100%;
+      height:auto;
     }
 
     .footer{
@@ -283,7 +413,19 @@
       }
 
       .nav-links{
+        gap:12px;
+      }
+
+      .pub-item{
+        flex-direction:column;
         gap:14px;
+      }
+
+      .pub-thumb,
+      .service-photo{
+        width:100%;
+        flex-basis:auto;
+        max-width:420px;
       }
     }
 
@@ -301,7 +443,7 @@
       }
 
       .nav-links{
-        font-size:0.95rem;
+        font-size:0.92rem;
       }
     }
   </style>
@@ -314,9 +456,11 @@
       <div class="nav-links">
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
+        <a href="#projects">Research &amp; Projects</a>
+        <a href="#reading">Reading Notes</a>
+        <a href="#study">Study Notes</a>
         <a href="#teaching">Teaching</a>
-        <a href="#skills">Skills</a>
-        <a href="#notes">Independent Study Notes</a>
+        <a href="#service">Service</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -340,16 +484,17 @@
         </p>
 
         <p class="intro">
-          I am a new sophomore student at
+          I am a new sophomore at
           <a href="https://www.stonybrook.edu/" target="_blank" rel="noreferrer">Stony Brook University</a>
-          majoring in Mathematics. I am also working for
-          <a href="https://www.stonybrook.edu/physics/nngroup/" target="_blank" rel="noreferrer">NN Group</a>
-          supervised by <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>,
-          building GUNDAM tutorials and data-analysis workflows for neutrino-oscillation studies.
-          Before that, I graduated from
+          majoring in Mathematics. I work with the
+          <a href="https://www.stonybrook.edu/physics/nngroup/" target="_blank" rel="noreferrer">Neutrino and Nucleon Decay Group</a>
+          under <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>,
+          building GUNDAM tutorials and data-analysis workflows for neutrino-oscillation studies;
+          my current focus is validating simulation-based inference against traditional likelihood
+          fitting on problems where the ground truth is exactly known.
+          Before Stony Brook, I graduated from
           <a href="https://www.pkuschool.edu.cn/" target="_blank" rel="noreferrer">Peking University Affiliated High School</a>.
-          My academic interests currently span Machine Learning, AI4Science, Applied PDE, and QIQC.
-          As an early-stage undergraduate, I am intentionally exploring these areas through research experiences in order to develop a more focused long-term direction.
+          My broader interests span Machine Learning, AI4Science, Applied PDE, and QIQC.
         </p>
       </div>
     </div>
@@ -359,13 +504,13 @@
     <section id="education" class="section">
       <h2>Education</h2>
       <p><strong>Stony Brook University</strong>, B.S. in Mathematics</p>
-      <p>GPA: 4.0/4.0 (Fall 2025), 4.0/4.0 (Spring 2026)</p>
+      <p>GPA: 4.0/4.0 (Fall 2025), 4.0/4.0 (Spring 2026), 4.0/4.0 (Summer 2026)</p>
       <p>
         <strong>Completed Core Coursework:</strong>
         Single-Variable Calculus II (MAT132), Linear Algebra (MAT211), Foundations of Computer Science (CSE113),
         Introduction to Artificial Intelligence (CIS102), Multivariable Calculus (MAT203), Ordinary Differential Equations (MAT303),
-        Logic and Proof (MAT250), Probability and Statistics (AMS310), Finite Mathematical Structure (AMS301),
-        Introduction of Research (PHY287).
+        Logic and Proof (MAT250), Probability and Statistics (AMS310), Finite Mathematical Structure and Graph Theory (AMS301),
+        Introduction to Research (PHY287).
       </p>
       <p>
         <strong>Current Coursework (Fall 2026):</strong>
@@ -398,6 +543,165 @@
       </ul>
     </section>
 
+    <section id="projects" class="section">
+      <h2>Research &amp; Projects</h2>
+
+      <div class="pub-item">
+        <div class="pub-thumb"><img src="assets/thumb-sbi.png" alt="Schematic: GUNDAM likelihood fit vs. neural posterior estimation on the same mock analysis"></div>
+        <div class="pub-body">
+          <p class="pub-title">GUNDAM vs. Simulation-Based Inference: Validation on a Tractable Mock Analysis<span class="tag">Ongoing</span></p>
+          <p class="pub-venue">Independent project, building on the GUNDAM tutorial infrastructure</p>
+          <p class="pub-desc">
+            A head-to-head validation of neural posterior estimation (normalizing flows, the
+            <code>sbi</code> library) against GUNDAM’s traditional binned-likelihood fit
+            (Minuit2 Migrad + Hesse) on a fully tractable mock neutrino analysis with three samples
+            and ten correlated normalization parameters. Because the mock likelihood is exact, the
+            Migrad+Hesse answer serves as ground truth: the study compares posteriors on the Asimov
+            dataset, checks calibration on both sides (simulation-based calibration vs. pull studies),
+            and measures the amortization crossover where SBI’s one-time training cost pays off.
+          </p>
+          <p class="pub-links">
+            <a href="https://github.com/YidingSun0824/gundam-sbi-benchmark" target="_blank" rel="noreferrer">[GitHub]</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb"><img src="assets/thumb-gundam.png" alt="GUNDAM fitter terminal output: parameter set summary and dataset loading log"></div>
+        <div class="pub-body">
+          <p class="pub-title">End-to-End GUNDAM Input Tutorial</p>
+          <p class="pub-venue">Stony Brook Neutrino and Nucleon Decay Group</p>
+          <p class="pub-desc">
+            A progressive three-tier tutorial (basic → extended → advanced) for
+            <a href="https://github.com/gundam-organization/gundam" target="_blank" rel="noreferrer">GUNDAM</a>,
+            the fitting framework used in modern neutrino-oscillation analyses. Includes a mock ROOT
+            dataset generator, step-by-step fitter configurations building from a single normalization
+            parameter to correlated parameter sets and spline responses, a fully modular
+            large-analysis-style configuration tree, and a complete dial-type reference.
+          </p>
+          <p class="pub-links">
+            <a href="https://github.com/YidingSun0824/gundam-input-tutorial_new" target="_blank" rel="noreferrer">[GitHub]</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb"><img src="assets/thumb-admissions.png" alt="Design preview with synthetic data: radar-chart comparison of an applicant profile against the admitted cohort"></div>
+        <div class="pub-body">
+          <p class="pub-title">SBU Physics PhD Admissions Profile<span class="tag">Ongoing</span></p>
+          <p class="pub-venue">Independent, student-run data project</p>
+          <p class="pub-desc">
+            A survey-based, ethics-first profile of the admitted PhD cohort in Stony Brook Physics
+            &amp; Astronomy: anonymized data collection from current students, cohort statistics with
+            PCA/UMAP projections, and a planned interactive comparison tool (radar charts and
+            AI-assisted narrative feedback). Deliberately <em>not</em> an admission-probability
+            predictor — with a small sample and no rejected-applicant control group, such a claim
+            would be statistically indefensible. Survey instrument and consent design complete; data
+            collection underway.
+          </p>
+          <p class="pub-links">
+            <a href="https://github.com/YidingSun0824/sbu-physics-phd-profile" target="_blank" rel="noreferrer">[GitHub]</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="reading" class="section">
+      <h2>Paper Reading Notes</h2>
+
+      <div class="note-item">
+        <p class="pub-title">Game Theory with Simulation of Other Players</p>
+        <p class="pub-venue">V. Kovařík, C. Oesterheld, V. Conitzer — IJCAI 2023</p>
+        <p class="pub-desc">
+          Reading note written after Prof. Conitzer’s talk at the 37th Stony Brook Game Theory
+          Festival (July 2026). Covers the simulation-game model, the value-of-information
+          indifference condition, the piecewise-constant behavior of the simulator’s equilibrium
+          strategy, the trust-game calculation worked in full, and the welfare cases where simulation
+          helps or hurts. Ends with open questions and a proposed experiment comparing LLM-agent
+          behavior in the trust game against the equilibrium predictions.
+        </p>
+        <p class="pub-links">
+          <a href="files/reading-conitzer-2023-simulation-games.pdf" target="_blank" rel="noreferrer">[Note]</a>
+          <a href="files/notes-game-theory-handwritten.pdf" target="_blank" rel="noreferrer">[Handwritten notes]</a>
+        </p>
+      </div>
+
+      <div class="note-item">
+        <p class="pub-title">The ND280 Semi-Frequentist Fitting Strategy</p>
+        <p class="pub-venue">Working note — near-detector fits in T2K-style oscillation analyses</p>
+        <p class="pub-desc">
+          A short note on the near-detector likelihood: the binned Poisson Δχ², Gaussian penalty
+          terms for flux, detector, and cross-section systematics, and the Barlow–Beeston treatment
+          of Monte-Carlo statistical uncertainty.
+        </p>
+        <p class="pub-links">
+          <a href="files/reading-nd280-likelihood.pdf" target="_blank" rel="noreferrer">[Note]</a>
+        </p>
+      </div>
+
+      <div class="note-item">
+        <p class="pub-title">Reading Notes on the Development of Large Language Models</p>
+        <p class="pub-venue">Transformer · BERT · GPT-3 · InstructGPT · Chain-of-Thought</p>
+        <p class="pub-desc">
+          Notes on five foundational papers, tracing the path from architecture (attention replacing
+          recurrence) to scale (in-context learning) to alignment (RLHF) and prompting (chain of
+          thought), with reflections on what each stage does and does not establish.
+        </p>
+        <p class="pub-links">
+          <a href="files/reading-llm-papers.pdf" target="_blank" rel="noreferrer">[Note]</a>
+        </p>
+      </div>
+
+    </section>
+
+    <section id="study" class="section">
+      <h2>Independent Study Notes</h2>
+
+      <h3>Course Notes</h3>
+      <ul class="material-list">
+        <li>
+          <strong>MIT 18.065 — Matrix Methods in Data Analysis, Signal Processing, and Machine Learning</strong>
+          (G. Strang) — <span class="muted">self-study; notes in progress</span>
+        </li>
+        <li>
+          <strong>Dive into Deep Learning (D2L)</strong>
+        </li>
+      </ul>
+
+      <h3>Topic Notes</h3>
+      <p class="muted">
+        Notes from seminars, math-club talks, and self-study side quests.
+      </p>
+      <ul class="material-list">
+        <li>
+          <strong>Markov Chain Monte Carlo</strong> — <span class="muted">self-study</span>
+          <!-- 扫描好后取消注释: <a href="files/notes-mcmc.pdf" target="_blank" rel="noreferrer">[PDF]</a> -->
+        </li>
+        <li>
+          <strong>Green’s Functions for PDEs</strong> — <span class="muted">self-study</span>
+          <!-- 扫描好后取消注释: <a href="files/notes-green-function-pde.pdf" target="_blank" rel="noreferrer">[PDF]</a> -->
+        </li>
+        <li>
+          <strong>The Principle of Least Action</strong> — <span class="muted">lecture notes</span>
+          <!-- 扫描好后取消注释: <a href="files/notes-least-action.pdf" target="_blank" rel="noreferrer">[PDF]</a> -->
+        </li>
+        <li>
+          <strong>Quantum Computing</strong> — <span class="muted">Lecture notes</span>
+        </li>
+        <li>
+          <strong>Gaussian Integers ℤ[i]</strong> — <span class="muted">math-club talk</span>
+        </li>
+      </ul>
+
+      <h3>Textbook Notes</h3>
+      <ul class="material-list">
+        <li><strong>Real Analysis</strong> — Bartle &amp; Sherbert, <span class="muted">Introduction to Real Analysis</span></li>
+        <li><strong>Complex Analysis</strong> — Fisher, <span class="muted">Complex Variables</span></li>
+        <li><strong>Linear Algebra</strong> — Axler, <span class="muted">Linear Algebra Done Right</span></li>
+        <li><strong>Algorithms</strong> — CLRS, <span class="muted">Introduction to Algorithms</span></li>
+      </ul>
+    </section>
+
     <section id="teaching" class="section">
       <h2>Teaching Resources</h2>
       <ul class="material-list">
@@ -408,20 +712,36 @@
       </ul>
     </section>
 
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <p><strong>Programming:</strong> Python, R, Java (currently improving)</p>
-    </section>
+    <section id="service" class="section">
+      <h2>Service &amp; Activities</h2>
 
-    <section id="notes" class="section">
-      <h2>Independent Study Notes</h2>
-      <ul class="material-list">
-        <li><strong>Real Analysis</strong> — Bartle &amp; Sherbert, <span class="muted">Introduction to Real Analysis</span></li>
-        <li><strong>Complex Analysis</strong> — Fisher, <span class="muted">Complex Variables</span></li>
-        <li><strong>Linear Algebra</strong> — Axler, <span class="muted">Linear Algebra Done Right</span></li>
-        <li><strong>Algorithms</strong> — CLRS, <span class="muted">Introduction to Algorithms</span></li>
-      </ul>
-      <p class="muted">Coming soon...</p>
+      <div class="note-item">
+        <p class="pub-title">Curriculum Feedback: MAT 203 Sequencing Memo</p>
+        <p class="pub-venue">Memo to the Department of Mathematics, June 2026</p>
+        <p class="pub-desc">
+          A student memo on the pacing of multivariable calculus: the overlap with MAT 211, the
+          compressed vector-calculus material at the end of the semester, and concrete suggestions —
+          a diagnostic vector review module, an explicit “derivative as a linear map” bridge to the
+          Jacobian, and a conceptual overview connecting Green’s, Stokes’, and the divergence
+          theorems. The department chair responded that these observations would be brought to a
+          faculty teaching discussion at the start of the semester, where several instructors had
+          raised similar points.
+        </p>
+        <p class="pub-links">
+          <a href="files/mat203-curriculum-memo.pdf" target="_blank" rel="noreferrer">[Memo]</a>
+        </p>
+      </div>
+
+      <div class="pub-item">
+        <div class="service-photo"><img src="assets/bbq.jpg" alt="Department BBQ outside the Mathematics building at Stony Brook"></div>
+        <div class="pub-body">
+          <p class="pub-title">Physics Department BBQ</p>
+          <p class="pub-desc">
+            Co-organized a department-wide BBQ with Stone Chou — grills, a long food line, and a
+            good excuse for students, PhDs, and faculty to talk outside of seminars.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="contact" class="section">
