@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Yiding Sun</title>
+  <meta name="description" content="Yiding Sun — undergraduate at Stony Brook University. Neutrino-oscillation fitting with GUNDAM, equivariant graph neural networks, and scientific machine learning." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,6 +274,41 @@
       color:var(--muted);
     }
 
+    /* ---------- News ---------- */
+
+    .news-list{
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .news-item{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      gap:18px;
+      padding:11px 0;
+      border-bottom:1px solid #f1f1f1;
+      align-items:baseline;
+    }
+
+    .news-item:last-child{
+      border-bottom:none;
+      padding-bottom:2px;
+    }
+
+    .news-date{
+      color:var(--muted);
+      font-size:0.9rem;
+      font-weight:600;
+      font-variant-numeric:tabular-nums;
+      white-space:nowrap;
+    }
+
+    .news-text{
+      color:#333333;
+      font-size:0.97rem;
+    }
+
     /* ---------- Project / publication-style cards ---------- */
 
     .pub-item{
@@ -337,6 +373,13 @@
       white-space:nowrap;
     }
 
+    .pub-status{
+      font-size:0.9rem;
+      color:var(--muted);
+      font-style:italic;
+      margin:0;
+    }
+
     .tag{
       display:inline-block;
       vertical-align:2px;
@@ -351,6 +394,11 @@
       text-transform:uppercase;
     }
 
+    .tag-done{
+      border-color:#9a9a98;
+      color:#6b6b69;
+    }
+
     /* Reading-note entries: same anatomy, no thumbnail */
 
     .note-item{
@@ -363,20 +411,39 @@
       padding-bottom:6px;
     }
 
-    /* Service items */
+    /* ---------- Photo row (community & activities) ---------- */
 
-    .service-photo{
-      flex:0 0 235px;
-      width:235px;
-      border-radius:12px;
-      border:1px solid #e6e6e6;
-      overflow:hidden;
+    .photo-row{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      margin-top:18px;
     }
 
-    .service-photo img{
+    .photo-card figure{
+      margin:0;
+    }
+
+    .photo-card img{
       display:block;
       width:100%;
-      height:auto;
+      height:200px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:12px;
+      border:1px solid #e6e6e6;
+      background:#fafafa;
+    }
+
+    .photo-card img.focus-upper{
+      object-position:50% 16%;
+    }
+
+    .photo-card figcaption{
+      margin-top:9px;
+      font-size:0.88rem;
+      line-height:1.55;
+      color:var(--muted);
     }
 
     .footer{
@@ -421,11 +488,14 @@
         gap:14px;
       }
 
-      .pub-thumb,
-      .service-photo{
+      .pub-thumb{
         width:100%;
         flex-basis:auto;
         max-width:420px;
+      }
+
+      .photo-row{
+        grid-template-columns:1fr 1fr;
       }
     }
 
@@ -445,6 +515,19 @@
       .nav-links{
         font-size:0.92rem;
       }
+
+      .news-item{
+        grid-template-columns:1fr;
+        gap:2px;
+      }
+
+      .photo-row{
+        grid-template-columns:1fr;
+      }
+
+      .photo-card img{
+        height:230px;
+      }
     }
   </style>
 </head>
@@ -454,13 +537,12 @@
     <nav class="nav">
       <div class="brand">孫一丁</div>
       <div class="nav-links">
+        <a href="#news">News</a>
         <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
         <a href="#projects">Research &amp; Projects</a>
         <a href="#reading">Reading Notes</a>
-        <a href="#study">Study Notes</a>
         <a href="#teaching">Teaching</a>
-        <a href="#service">Service</a>
+        <a href="#community">Community</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -484,14 +566,15 @@
         </p>
 
         <p class="intro">
-          I am a new sophomore at
+          I am a sophomore at
           <a href="https://www.stonybrook.edu/" target="_blank" rel="noreferrer">Stony Brook University</a>
           majoring in Mathematics. I work with the
           <a href="https://www.stonybrook.edu/physics/nngroup/" target="_blank" rel="noreferrer">Neutrino and Nucleon Decay Group</a>
           under <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>,
-          building GUNDAM tutorials and data-analysis workflows for neutrino-oscillation studies;
-          my current focus is validating simulation-based inference against traditional likelihood
-          fitting on problems where the ground truth is exactly known.
+          working on the GUNDAM fitting framework for neutrino-oscillation analyses — most recently on
+          propagating analytic likelihood gradients out of its reweighting engine. I also work on
+          equivariant graph neural networks with
+          <a href="https://you.stonybrook.edu/yuefandeng/" target="_blank" rel="noreferrer">Prof. Yuefan Deng</a>’s group.
           Before Stony Brook, I graduated from
           <a href="https://www.pkuschool.edu.cn/" target="_blank" rel="noreferrer">Peking University Affiliated High School</a>.
           My broader interests span Machine Learning, AI4Science, Applied PDE, and QIQC.
@@ -501,6 +584,56 @@
   </section>
 
   <main class="container">
+    <section id="news" class="section">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li class="news-item">
+          <span class="news-date">2026.09.08</span>
+          <span class="news-text">
+            Started a new direction in GUNDAM — adding analytic likelihood gradients to the fitter —
+            with <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>
+            and <a href="https://www.stonybrook.edu/commcms/physics/people/_profiles/mcgrewc" target="_blank" rel="noreferrer">Clark McGrew</a>.
+          </span>
+        </li>
+
+        <li class="news-item">
+          <span class="news-date">2026.08.27</span>
+          <span class="news-text">
+            The end-to-end GUNDAM input tutorial was merged into the
+            <a href="https://github.com/gundam-organization/gundam-input-tutorial" target="_blank" rel="noreferrer">GUNDAM organization</a>
+            as an official repository; developed with
+            <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>,
+            reviewed with <a href="https://www.stonybrook.edu/physics/nngroup/members_temp.html" target="_blank" rel="noreferrer">Vlada Yevarouskaya</a>.
+          </span>
+        </li>
+
+        <li class="news-item">
+          <span class="news-date">2026.07.27</span>
+          <span class="news-text">
+            Began collaborating with
+            <a href="https://you.stonybrook.edu/yuefandeng/" target="_blank" rel="noreferrer">Bernard Tenreiro</a>
+            on pairwise message passing for equivariant graph networks.
+          </span>
+        </li>
+
+        <li class="news-item">
+          <span class="news-date">2026.05.05</span>
+          <span class="news-text">
+            Joined the GUNDAM systematics effort, taking on the end-to-end input tutorial.
+          </span>
+        </li>
+
+        <li class="news-item">
+          <span class="news-date">2026.03.12</span>
+          <span class="news-text">
+            Joined the Stony Brook
+            <a href="https://www.stonybrook.edu/physics/nngroup/" target="_blank" rel="noreferrer">Neutrino and Nucleon Decay Group</a>,
+            advised by <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>.
+          </span>
+        </li>
+      </ul>
+    </section>
+
     <section id="education" class="section">
       <h2>Education</h2>
       <p><strong>Stony Brook University</strong>, B.S. in Mathematics</p>
@@ -519,72 +652,64 @@
       </p>
     </section>
 
-    <section id="experience" class="section">
-      <h2>Experience</h2>
-      <ul>
-        <li>
-          <strong>Research Assistant, Stony Brook Neutrino Group — GUNDAM Tutorial Development</strong> —
-          Developed an end-to-end tutorial for GUNDAM, a neutrino-oscillation fitting and analysis framework,
-          using mock datasets to demonstrate the full workflow from input configuration to fitting execution,
-          ROOT output generation, and plot interpretation. Built reproducible documentation and tested command-line
-          pipelines with Unix shell, Git/GitHub, ROOT, and Python/C++-based scientific computing tools.
-        </li>
-
-        <li>
-          <strong>AMS 310 Teaching Assistant / Grader — Probability and Statistics</strong> —
-          Served as a Teaching Assistant and Grader for AMS 310 Probability and Statistics. Graded assignments,
-          evaluated students’ mathematical reasoning, and provided feedback on topics including probability distributions,
-          expectation, variance, sampling distributions, confidence intervals, hypothesis testing, and two-sample inference.
-        </li>
-
-        <li>
-          <strong>Math Club</strong> —
-          Frequent academic exchanges with senior undergraduate students and PhD students majoring in Applied Mathematics.
-        </li>
-      </ul>
-    </section>
-
     <section id="projects" class="section">
       <h2>Research &amp; Projects</h2>
 
-      <div class="pub-item">
-        <div class="pub-thumb"><img src="assets/thumb-sbi.png" alt="Schematic: GUNDAM likelihood fit vs. neural posterior estimation on the same mock analysis"></div>
-        <div class="pub-body">
-          <p class="pub-title">GUNDAM vs. Simulation-Based Inference: Validation on a Tractable Mock Analysis<span class="tag">Refinement</span></p>
-          <p class="pub-venue">Independent project, building on the GUNDAM tutorial infrastructure</p>
-          <p class="pub-desc">
-            A head-to-head validation of neural posterior estimation (normalizing flows, the
-            <code>sbi</code> library) against GUNDAM’s traditional binned-likelihood fit
-            (Minuit2 Migrad + Hesse) on a fully tractable mock neutrino analysis with three samples
-            and ten correlated normalization parameters. Because the mock likelihood is exact, the
-            Migrad+Hesse answer serves as ground truth: the study compares posteriors on the Asimov
-            dataset, checks calibration on both sides (simulation-based calibration vs. pull studies),
-            and measures the amortization crossover where SBI’s one-time training cost pays off.
-          </p>
-          <p class="pub-links">
-            <a href="https://github.com/YidingSun0824/gundam-sbi-benchmark" target="_blank" rel="noreferrer">[GitHub]</a>
-          </p>
-        </div>
-      </div>
+      <h3>Research</h3>
 
       <div class="pub-item">
         <div class="pub-thumb"><img src="assets/thumb-gundam.png" alt="GUNDAM fitter terminal output: parameter set summary and dataset loading log"></div>
         <div class="pub-body">
-          <p class="pub-title">End-to-End GUNDAM Input Tutorial</p>
-          <p class="pub-venue">Stony Brook Neutrino and Nucleon Decay Group</p>
+          <p class="pub-title">End-to-End GUNDAM Input Tutorial<span class="tag tag-done">Completed</span></p>
+          <p class="pub-venue">Stony Brook Neutrino and Nucleon Decay Group · adopted by the GUNDAM organization</p>
           <p class="pub-desc">
             A progressive three-tier tutorial (basic → extended → advanced) for
             <a href="https://github.com/gundam-organization/gundam" target="_blank" rel="noreferrer">GUNDAM</a>,
             the fitting framework used in modern neutrino-oscillation analyses. Includes a mock ROOT
             dataset generator, step-by-step fitter configurations building from a single normalization
             parameter to correlated parameter sets and spline responses, a fully modular
-            large-analysis-style configuration tree, and a complete dial-type reference.
+            large-analysis-style configuration tree, and a complete dial-type reference. It is now
+            maintained as an official repository under the GUNDAM organization.
           </p>
           <p class="pub-links">
-            <a href="https://github.com/YidingSun0824/gundam-input-tutorial_new" target="_blank" rel="noreferrer">[GitHub]</a>
+            <a href="https://github.com/gundam-organization/gundam-input-tutorial" target="_blank" rel="noreferrer">[Repository]</a>
+            <a href="https://github.com/gundam-organization" target="_blank" rel="noreferrer">[GUNDAM organization]</a>
           </p>
         </div>
       </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb"><img src="assets/thumb-egnn.png" alt="Equivariance of a graph network: acting on the input by a group element and acting on the output commute"></div>
+        <div class="pub-body">
+          <p class="pub-title">Pairwise Message Passing for Equivariant Graph Networks<span class="tag">Ongoing</span></p>
+          <p class="pub-venue">With Bernard Tenreiro, Prof. Yuefan Deng’s group · since July 2026</p>
+          <p class="pub-desc">
+            An edge-coloring decomposition of the message-passing graph that reduces the per-layer cost
+            of equivariant graph neural networks from O(|E|) to O(|V|), evaluated on QM9 molecular
+            property prediction. Training runs on Stony Brook’s SeaWulf A100 nodes.
+          </p>
+          <p class="pub-status">Code and results are not yet public.</p>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-thumb"><img src="assets/thumb-gradient.png" alt="Bar chart: an analytic gradient costs about as much as one likelihood evaluation, roughly 800 times less than central differences"></div>
+        <div class="pub-body">
+          <p class="pub-title">Analytic Likelihood Gradients for GUNDAM<span class="tag">Ongoing</span></p>
+          <p class="pub-venue">With Ciro Riccio and Clark McGrew · since September 2026</p>
+          <p class="pub-desc">
+            GUNDAM currently exposes only the value of the likelihood. This work propagates the analytic
+            gradient out of the reweighting engine, where the derivative information is already latent.
+            A central-difference gradient over <em>n</em> parameters costs 2<em>n</em> full reweights;
+            the analytic gradient costs about the same as one — changing the cost of a gradient from
+            O(<em>n</em>) likelihood evaluations to O(1). This opens the fitter to quasi-Newton
+            minimisation, Fisher-matrix preconditioning, and Hamiltonian Monte Carlo in the
+            ~500-dimensional near-detector parameter space.
+          </p>
+        </div>
+      </div>
+
+      <h3>Independent Projects</h3>
 
       <div class="pub-item">
         <div class="pub-thumb"><img src="assets/thumb-admissions.png" alt="Design preview with synthetic data: radar-chart comparison of an applicant profile against the admitted cohort"></div>
@@ -604,6 +729,17 @@
             <a href="https://github.com/YidingSun0824/sbu-physics-phd-profile" target="_blank" rel="noreferrer">[GitHub]</a>
           </p>
         </div>
+      </div>
+
+      <div class="note-item">
+        <p class="pub-title">Chalkside</p>
+        <p class="pub-venue">AI-assisted guided learning for high-school and undergraduate study · joined September 2026</p>
+        <p class="pub-desc">
+          Joined the Chalkside team in September 2026. More to come.
+        </p>
+        <p class="pub-links">
+          <a href="https://trychalkside.com/" target="_blank" rel="noreferrer">[Website]</a>
+        </p>
       </div>
     </section>
 
@@ -655,67 +791,30 @@
 
     </section>
 
-    <section id="study" class="section">
-      <h2>Independent Study Notes</h2>
-
-      <h3>Course Notes</h3>
-      <ul class="material-list">
-        <li>
-          <strong>MIT 18.065 — Matrix Methods in Data Analysis, Signal Processing, and Machine Learning</strong>
-          (G. Strang) — <span class="muted">self-study; notes in progress</span>
-        </li>
-        <li>
-          <strong>Dive into Deep Learning (D2L)</strong>
-        </li>
-      </ul>
-
-      <h3>Topic Notes</h3>
-      <p class="muted">
-        Notes from seminars, math-club talks, and self-study side quests.
-      </p>
-      <ul class="material-list">
-        <li>
-          <strong>Markov Chain Monte Carlo</strong> — <span class="muted">self-study</span>
-          <!-- 扫描好后取消注释: <a href="files/notes-mcmc.pdf" target="_blank" rel="noreferrer">[PDF]</a> -->
-        </li>
-        <li>
-          <strong>Green’s Functions for PDEs</strong> — <span class="muted">self-study</span>
-          <!-- 扫描好后取消注释: <a href="files/notes-green-function-pde.pdf" target="_blank" rel="noreferrer">[PDF]</a> -->
-        </li>
-        <li>
-          <strong>The Principle of Least Action</strong> — <span class="muted">lecture notes</span>
-          <!-- 扫描好后取消注释: <a href="files/notes-least-action.pdf" target="_blank" rel="noreferrer">[PDF]</a> -->
-        </li>
-        <li>
-          <strong>Quantum Computing</strong> — <span class="muted">Lecture notes</span>
-        </li>
-        <li>
-          <strong>Gaussian Integers ℤ[i]</strong> — <span class="muted">math-club talk</span>
-        </li>
-      </ul>
-
-      <h3>Textbook Notes</h3>
-      <ul class="material-list">
-        <li><strong>Real Analysis</strong> — Bartle &amp; Sherbert, <span class="muted">Introduction to Real Analysis</span></li>
-        <li><strong>Complex Analysis</strong> — Fisher, <span class="muted">Complex Variables</span></li>
-        <li><strong>Linear Algebra</strong> — Axler, <span class="muted">Linear Algebra Done Right</span></li>
-        <li><strong>Algorithms</strong> — CLRS, <span class="muted">Introduction to Algorithms</span></li>
-        <li><strong>Quantum Mechanics</strong> — Griffiths, <span class="muted">Introduction to Quantum Mechanics</span></li>
-      </ul>
-    </section>
-
     <section id="teaching" class="section">
-      <h2>Teaching Resources</h2>
+      <h2>Teaching</h2>
+
+            <p>
+        I am a Teaching Assistant and grader for
+        <a href="https://www.stonybrook.edu/ams/academics/undergraduate/ug-courses/ams-310.html" target="_blank" rel="noreferrer">AMS 310: Survey of Probability and Statistics</a>
+        in Fall 2026, under
+        <a href="https://www.stonybrook.edu/commcms/ams/people/index" target="_blank" rel="noreferrer">Prof. Fred Rispoli</a>.
+        I hold office hours on Thursdays, 6–8 PM, working through problems and answering
+        questions on the course material, and I grade roughly 50 submissions per assignment —
+        across probability distributions, expectation and variance, sampling distributions,
+        confidence intervals, hypothesis testing, and two-sample inference.
+      </p>
+
       <ul class="material-list">
         <li>
           <strong>AMS 310: Probability and Statistics</strong> —
-          <a href="teaching/ams310.html">Lecture notes, practice problems, and selected solutions</a>
+          <a href="teaching/ams310.html">course materials, practice problems, and selected solutions</a>
         </li>
       </ul>
     </section>
 
-    <section id="service" class="section">
-      <h2>Service &amp; Activities</h2>
+    <section id="community" class="section">
+      <h2>Community &amp; Activities</h2>
 
       <div class="note-item">
         <p class="pub-title">Curriculum Feedback: MAT 203 Sequencing Memo</p>
@@ -734,14 +833,34 @@
         </p>
       </div>
 
-      <div class="pub-item">
-        <div class="service-photo"><img src="assets/bbq.jpg" alt="Department BBQ outside the Mathematics building at Stony Brook"></div>
-        <div class="pub-body">
-          <p class="pub-title">Physics Department BBQ</p>
-          <p class="pub-desc">
-            Co-organized a department-wide BBQ with <a href="https://stonechou2007.github.io/StoneChou2007/portfolio/" target="_blank"rel="noreferrer">Stone Chou</a>— grills, a long food line, and a
-            good excuse for students, PhDs, and faculty to talk outside of seminars.
-          </p>
+      <div class="photo-row">
+        <div class="photo-card">
+          <figure>
+            <img src="assets/nn-group.jpg" alt="Members of the Neutrino and Nucleon Decay Group outside the Simons Center for Geometry and Physics">
+            <figcaption>
+              Neutrino and Nucleon Decay Group, Simons Center for Geometry and Physics, September 2026.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="photo-card">
+          <figure>
+            <img class="focus-upper" src="assets/glashow.jpg" alt="Shaking hands with Sheldon Glashow after the C.N. Yang Colloquium">
+            <figcaption>
+              C.N. Yang Colloquium — “My Memories of Frank Yang,” Sheldon Glashow, Simons Center,
+              September 15, 2026.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="photo-card">
+          <figure>
+            <img src="assets/bbq.jpg" alt="Department BBQ outside the Mathematics building at Stony Brook">
+            <figcaption>
+              Physics Department BBQ, co-organized with
+              <a href="https://stonechou2007.github.io/StoneChou2007/portfolio/" target="_blank" rel="noreferrer">Stone Chou</a>.
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
