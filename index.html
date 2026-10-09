@@ -557,7 +557,7 @@
           <span>Y</span><span>i</span><span>d</span><span>i</span><span>n</span><span>g</span><span class="space">&nbsp;</span><span>S</span><span>u</span><span>n</span>
         </h1>
 
-        <p class="subtitle">Stony Brook University · Mathematics &amp; Computer Science</p>
+        <p class="subtitle">Stony Brook University · Mathematics &amp; Applied Mathematics</p>
 
         <p class="hero-links">
           <a href="mailto:yiding.sun@stonybrook.edu">Email</a>
@@ -568,13 +568,13 @@
         <p class="intro">
           I am a sophomore at
           <a href="https://www.stonybrook.edu/" target="_blank" rel="noreferrer">Stony Brook University</a>
-          majoring in Mathematics. I work with the
+          double-majoring in Mathematics and Applied Mathematics &amp; Statistics. I work with the
           <a href="https://www.stonybrook.edu/physics/nngroup/" target="_blank" rel="noreferrer">Neutrino and Nucleon Decay Group</a>
           under <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>,
           working on the GUNDAM fitting framework for neutrino-oscillation analyses — most recently on
-          propagating analytic likelihood gradients out of its reweighting engine. I also work on
+          propagating analytic likelihood gradients out of its reweighting engine. I also explored
           equivariant graph neural networks with
-          <a href="https://you.stonybrook.edu/yuefandeng/" target="_blank" rel="noreferrer">Prof. Yuefan Deng</a>’s group.
+          <a href="https://you.stonybrook.edu/yuefandeng/" target="_blank" rel="noreferrer">Prof. Yuefan Deng</a>’s group in summer 2026.
           Before Stony Brook, I graduated from
           <a href="https://www.pkuschool.edu.cn/" target="_blank" rel="noreferrer">Peking University Affiliated High School</a>.
           My broader interests span Machine Learning, AI4Science, PDE, and QIQC.
@@ -590,7 +590,7 @@
         <li class="news-item">
           <span class="news-date">2026.09.08</span>
           <span class="news-text">
-            Started a new direction in GUNDAM — adding analytic likelihood gradients to the fitter —
+            Following the tutorial, began implementing analytic likelihood gradients in GUNDAM
             with <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>
             and <a href="https://www.stonybrook.edu/commcms/physics/people/_profiles/mcgrewc" target="_blank" rel="noreferrer">Clark McGrew</a>.
           </span>
@@ -604,15 +604,6 @@
             as an official repository; developed with
             <a href="https://www.stonybrook.edu/physics/people/_profiles/riccioc.html" target="_blank" rel="noreferrer">Ciro Riccio</a>,
             reviewed with <a href="https://www.stonybrook.edu/physics/nngroup/members_temp.html" target="_blank" rel="noreferrer">Vlada Yevarouskaya</a>.
-          </span>
-        </li>
-
-        <li class="news-item">
-          <span class="news-date">2026.07.27</span>
-          <span class="news-text">
-            Began collaborating with
-            <a href="https://you.stonybrook.edu/yuefandeng/" target="_blank" rel="noreferrer">Bernard Tenreiro</a>
-            on pairwise message passing for equivariant graph networks.
           </span>
         </li>
 
@@ -636,8 +627,8 @@
 
     <section id="education" class="section">
       <h2>Education</h2>
-      <p><strong>Stony Brook University</strong>, B.S. in Mathematics</p>
-      <p>Accumulated GPA: 3.99/4.0</p>
+      <p><strong>Stony Brook University</strong>, B.S. in Mathematics and Applied Mathematics &amp; Statistics (double major)</p>
+      <p>Accumulated GPA: 3.98/4.0</p>
       <p>GPA: 4.0/4.0 (Fall 2025), 4.0/4.0 (Spring 2026), 4.0/4.0 (Summer 2026)</p>
       <p>
         <strong>Completed Core Coursework:</strong>
@@ -681,30 +672,33 @@
       <div class="pub-item">
         <div class="pub-thumb"><img src="assets/thumb-egnn.png" alt="Equivariance of a graph network: acting on the input by a group element and acting on the output commute"></div>
         <div class="pub-body">
-          <p class="pub-title">Pairwise Message Passing for Equivariant Graph Networks<span class="tag">Ongoing</span></p>
-          <p class="pub-venue">With Bernard Tenreiro, Prof. Yuefan Deng’s group · since July 2026</p>
+          <p class="pub-title">Equivariant Message Passing<span class="tag tag-done">Exploratory</span></p>
+          <p class="pub-venue">With Bernard Tenreiro, Prof. Yuefan Deng’s group · Summer 2026</p>
           <p class="pub-desc">
-            An edge-coloring decomposition of the message-passing graph that reduces the per-layer cost
-            of equivariant graph neural networks from O(|E|) to O(|V|), evaluated on QM9 molecular
-            property prediction. Training runs on Stony Brook’s SeaWulf A100 nodes.
+            Studied E(n)-equivariant message passing (EGNN, MPNN) and spectral graph methods, and set up
+            QM9 training on Stony Brook’s SeaWulf A100 cluster to test a matching-based (edge-coloring)
+            message-passing scheme. Exploratory; no results to report.
           </p>
-          <p class="pub-status">Code and results are not yet public.</p>
         </div>
       </div>
 
       <div class="pub-item">
-        <div class="pub-thumb"><img src="assets/thumb-gradient.png" alt="Bar chart: an analytic gradient costs about as much as one likelihood evaluation, roughly 800 times less than central differences"></div>
+        <div class="pub-thumb"><img src="assets/thumb-gradient.png" alt="Working note deriving the chain rule for the GUNDAM likelihood gradient under the Barlow–Beeston estimator"></div>
         <div class="pub-body">
           <p class="pub-title">Analytic Likelihood Gradients for GUNDAM<span class="tag">Ongoing</span></p>
-          <p class="pub-venue">With Ciro Riccio and Clark McGrew · since September 2026</p>
+          <p class="pub-venue">With Ciro Riccio and Clark McGrew · 2026–27</p>
           <p class="pub-desc">
-            GUNDAM currently exposes only the value of the likelihood. This work propagates the analytic
-            gradient out of the reweighting engine, where the derivative information is already latent.
-            A central-difference gradient over <em>n</em> parameters costs 2<em>n</em> full reweights;
-            the analytic gradient costs about the same as one — changing the cost of a gradient from
-            O(<em>n</em>) likelihood evaluations to O(1). This opens the fitter to quasi-Newton
-            minimisation, Fisher-matrix preconditioning, and Hamiltonian Monte Carlo in the
-            ~500-dimensional near-detector parameter space.
+            GUNDAM currently exposes only the value
+            of the likelihood, though the derivative information is already latent in its reweighting
+            engine. A central-difference gradient over <em>n</em> parameters costs 2<em>n</em> full
+            reweights; the analytic gradient costs about the same as one — changing the cost of a
+            gradient from O(<em>n</em>) likelihood evaluations to O(1). This opens the fitter to
+            quasi-Newton minimisation, Fisher-matrix preconditioning, and Hamiltonian Monte Carlo in
+            the ~500-dimensional near-detector parameter space. Alongside the implementation I am
+            working through the derivation in detail — how the chain rule behaves under the
+            Barlow–Beeston estimator, where the likelihood depends on the parameters through the summed
+            squared weights as well as the bin expectation, and what that implies for the gradient
+            storage API.
           </p>
         </div>
       </div>
