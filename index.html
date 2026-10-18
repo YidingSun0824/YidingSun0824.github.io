@@ -588,6 +588,17 @@
       <h2>News</h2>
       <ul class="news-list">
         <li class="news-item">
+          <span class="news-date">2026.10.18</span>
+          <span class="news-text">
+            Released a preregistered experiment putting LLM agents in both roles of the trust game
+            with simulation of Kovařík, Oesterheld and
+            <a href="https://www.cs.cmu.edu/~conitzer/" target="_blank" rel="noreferrer">Vincent Conitzer</a>
+            — 3,380 games; code, preregistration and write-up are
+            <a href="https://github.com/YidingSun0824/llm-simulation-trust-game" target="_blank" rel="noreferrer">public</a>.
+          </span>
+        </li>
+
+        <li class="news-item">
           <span class="news-date">2026.09.08</span>
           <span class="news-text">
             Following the tutorial, began implementing analytic likelihood gradients in GUNDAM
@@ -706,6 +717,30 @@
       <h3>Independent Projects</h3>
 
       <div class="pub-item">
+        <div class="pub-thumb"><img src="assets/thumb-trustgame.png" alt="Title page of the write-up: LLM Agents in the Trust Game with Simulation, a small preregistered experiment"></div>
+        <div class="pub-body">
+          <p class="pub-title">LLM Agents in the Trust Game with Simulation<span class="tag tag-done">Completed</span></p>
+          <p class="pub-venue">Independent experiment, following Kovařík, Oesterheld &amp; Conitzer (IJCAI 2023)</p>
+          <p class="pub-desc">
+            A preregistered experiment placing two Claude models in both roles of the trust game with
+            simulation, where the truster may pay <em>c</em> to run a copy of the trustee before
+            deciding — 3,380 one-shot games over 26 cells per model. The possibility of simulation
+            creates cooperation that is entirely absent without it, but not through the paper’s mixed
+            equilibrium: the trustee commits to cooperating rather than randomising, and the truster
+            pays for verification it does not need. A fresh copy of a sampled model behaves like an
+            independent draw from the trustee’s behaviour, so a simulation is only as good as the
+            trustee is predictable.
+          </p>
+          <p class="pub-links">
+            <a href="https://github.com/YidingSun0824/llm-simulation-trust-game" target="_blank" rel="noreferrer">[Repository]</a>
+            <a href="https://github.com/YidingSun0824/llm-simulation-trust-game/blob/main/writeup/note.pdf" target="_blank" rel="noreferrer">[Write-up]</a>
+            <a href="https://github.com/YidingSun0824/llm-simulation-trust-game/blob/main/PREREG.md" target="_blank" rel="noreferrer">[Preregistration]</a>
+            <a href="https://github.com/YidingSun0824/llm-simulation-trust-game/blob/main/results/REPORT.md" target="_blank" rel="noreferrer">[Results]</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="pub-item">
         <div class="pub-thumb"><img src="assets/thumb-admissions.png" alt="Design preview with synthetic data: radar-chart comparison of an applicant profile against the admitted cohort"></div>
         <div class="pub-body">
           <p class="pub-title">SBU Physics PhD Admissions Profile<span class="tag">Ongoing</span></p>
@@ -749,7 +784,8 @@
           indifference condition, the piecewise-constant behavior of the simulator’s equilibrium
           strategy, the trust-game calculation worked in full, and the welfare cases where simulation
           helps or hurts. Ends with open questions and a proposed experiment comparing LLM-agent
-          behavior in the trust game against the equilibrium predictions.
+          behavior in the trust game against the equilibrium predictions — since
+          <a href="#projects">carried out and written up</a>.
         </p>
         <p class="pub-links">
           <a href="files/reading-conitzer-2023-simulation-games.pdf" target="_blank" rel="noreferrer">[Note]</a>
